@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Retrofit Films</string>
+    <string name="api_key">a74f7a9542fbed2b84a773bd6af13cfc</string>
 </resources>

@@ -8,7 +8,7 @@ public class RetrofitInstance {
     private static Retrofit mRetrofit = null;
     private static final String BASE_URL = "https://api.themoviedb.org/3/";
 
-    public static JSONMovieHolderApi getInstance() {
+    public static JSONFilmsHolderApi getInstance() {
 
         if (mRetrofit == null) {
 
@@ -17,6 +17,6 @@ public class RetrofitInstance {
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
         }
-        return mRetrofit.create(JSONMovieHolderApi.class);
+        return mRetrofit.create(JSONFilmsHolderApi.class);
     }
 }

@@ -1,36 +1,38 @@
 package com.example.retrofitfilms;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.bumptech.glide.Glide;
+import com.example.retrofitfilms.databinding.ActivityInfoMovieBinding;
+import com.example.retrofitfilms.databinding.ActivityMainBinding;
 import com.example.retrofitfilms.model.Result;
 
-public class InfoMovieActivity extends AppCompatActivity {
+
+public class InfoFilmsActivity extends AppCompatActivity {
 
     private Result result;
+    private ActivityInfoMovieBinding activityInfoMovieBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_movie);
 
-        ImageView infoImageView = findViewById(R.id.infoImageView);
-        TextView infoNameFilmsTextView = findViewById(R.id.infoNameFilmsTextView);
-        TextView infoCountPopularityTextView = findViewById(R.id.infoCountPopularityTextView);
-
+        activityInfoMovieBinding = DataBindingUtil.setContentView(this, R.layout.activity_info_movie);
 
         Intent intent = getIntent();
         if (intent != null && intent.hasExtra("movieData")) {
 
            result = intent.getParcelableExtra("movieData");
 
-            if(result != null) {
+            activityInfoMovieBinding.setResult(result);
+
+           /* if(result != null) {
                 infoNameFilmsTextView.setText(result.getOriginalTitle());
                 infoCountPopularityTextView.setText(result.getOverview());
 
@@ -40,7 +42,7 @@ public class InfoMovieActivity extends AppCompatActivity {
                         .load(image)
                         .placeholder(R.drawable.original)//при долгой загрузки видим изображение
                         .into(infoImageView);
-            }
+            }*/
         }
     }
 }
